@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, AfterViewChecked, ChangeDetectorRef } from '@angular/core';
+import { Component, AfterViewInit, AfterViewChecked } from '@angular/core';
 import { DashboardService } from './dashboard.service';
 import { Widget } from './dashboard.model';
 
@@ -7,7 +7,6 @@ declare const $: any;
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css'],
   providers: [DashboardService]
 })
 export class DashboardComponent implements AfterViewChecked {
@@ -15,7 +14,6 @@ export class DashboardComponent implements AfterViewChecked {
   public widgets: Widget[];
 
   constructor(
-    private cd: ChangeDetectorRef,
     private service: DashboardService) {
     this.loadWidgets();
   }

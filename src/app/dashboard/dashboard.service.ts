@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Widget } from './dashboard.model';
-import 'rxjs/add/operator/delay';
 import { Subject } from 'rxjs/Subject';
-
 
 @Injectable()
 export class DashboardService {
@@ -27,8 +25,8 @@ export class DashboardService {
      }, 1000);
      setTimeout(() => {
       widgets.next([
-        { positionX: 0, positionY: 0, width: 4, height: 2, content: 'Widget 133' },
-        { positionX: 4, positionY: 0, width: 4, height: 4, content: 'Widget 222' },
+        { positionX: 0, positionY: 0, width: 4, height: 2, content: 'Widget 12' },
+        { positionX: 4, positionY: 0, width: 4, height: 4, content: 'Widget 13' },
       ]);
      }, 5000);
      return widgets;
