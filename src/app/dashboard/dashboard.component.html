@@ -1,3 +1,8 @@
 <div class="grid-stack" data-gs-width="12" data-gs-animate="yes">
+  <ng-container *ngFor="let widget of widgets">
+    <app-widget [positionX]="widget.positionX" [positionY]="widget.positionY" [width]="widget.width" [height]="widget.height">
+      <span>{{ widget.content }}</span>
+    </app-widget>
+  </ng-container>
   <ng-content></ng-content>
 </div>
