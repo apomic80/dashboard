@@ -19,9 +19,18 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
+        "../node_modules/jqueryui/jquery-ui.min.css",
+        "../node_modules/gridstack/dist/gridstack.min.css",
+        "../node_modules/gridstack/dist/gridstack-extra.min.css",
         "styles.css"
       ],
-      "scripts": [],
+      "scripts": [
+        "../node_modules/jquery/dist/jquery.min.js",
+        "../node_modules/jqueryui/jquery-ui.min.js",
+        "../node_modules/lodash/lodash.min.js",
+        "../node_modules/gridstack/dist/gridstack.min.js",
+        "../node_modules/gridstack/dist/gridstack.jQueryUI.min.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
