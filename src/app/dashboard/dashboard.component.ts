@@ -1,4 +1,4 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 
 declare const $: any;
 
@@ -9,10 +9,13 @@ declare const $: any;
 })
 export class DashboardComponent implements AfterViewInit {
 
+  @ViewChild('gridStackContainer')
+  public gridStackContainer: ElementRef;
+
   constructor() { }
 
   ngAfterViewInit() {
-    $('.grid-stack').gridstack();
+    $(this.gridStackContainer.nativeElement).gridstack();
   }
 
 }
