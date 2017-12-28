@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, AfterViewChecked } from '@angular/core';
+import { Component, ViewChild, ElementRef, AfterViewChecked } from '@angular/core';
 import { DashboardService } from './dashboard.service';
 import { Widget } from './dashboard.model';
 
@@ -11,6 +11,9 @@ declare const $: any;
 })
 export class DashboardComponent implements AfterViewChecked {
 
+  @ViewChild('gridStackContainer')
+  public gridStackContainer: ElementRef;
+
   public widgets: Widget[];
 
   constructor(
@@ -20,7 +23,7 @@ export class DashboardComponent implements AfterViewChecked {
 
   ngAfterViewChecked() {
     if (this.widgets) {
-      $('.grid-stack').gridstack();
+      $(this.gridStackContainer.nativeElement).gridstack();
     }
   }
 
@@ -28,7 +31,7 @@ export class DashboardComponent implements AfterViewChecked {
     this.service.getWidgets()
       .subscribe(arg => {
         this.widgets = arg;
-        const grid = $('.grid-stack').data('gridstack');
+        const grid = $(this.gridStackContainer.nativeElement).data('gridstack');
         if (grid) {
           grid.destroy(false);
         }
