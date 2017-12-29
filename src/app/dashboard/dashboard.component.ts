@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef, AfterViewChecked } from '@angular/core';
+import { Component, ViewChild, ElementRef, AfterViewChecked, OnDestroy } from '@angular/core';
 import { DashboardService } from './dashboard.service';
 import { Widget } from './dashboard.model';
 
@@ -9,7 +9,7 @@ declare const $: any;
   templateUrl: './dashboard.component.html',
   providers: [DashboardService]
 })
-export class DashboardComponent implements AfterViewChecked {
+export class DashboardComponent implements AfterViewChecked, OnDestroy {
 
   @ViewChild('gridStackContainer')
   public gridStackContainer: ElementRef;
@@ -31,11 +31,19 @@ export class DashboardComponent implements AfterViewChecked {
     this.service.getWidgets()
       .subscribe(arg => {
         this.widgets = arg;
-        const grid = $(this.gridStackContainer.nativeElement).data('gridstack');
-        if (grid) {
-          grid.destroy(false);
-        }
+        this.destroyGrid();
       });
+  }
+
+  private destroyGrid() {
+    const grid = $(this.gridStackContainer.nativeElement).data('gridstack');
+    if (grid) {
+      grid.destroy(false);
+    }
+  }
+
+  ngOnDestroy() {
+    this.destroyGrid()
   }
 
 }
