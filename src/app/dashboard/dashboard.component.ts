@@ -43,7 +43,7 @@ export class DashboardComponent implements AfterViewChecked, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.destroyGrid()
+    this.destroyGrid();
   }
 
 }
